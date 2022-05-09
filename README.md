@@ -85,5 +85,4 @@ cv2.destroyAllWindows()
 cap.release()
 ```
 ## References
-- [OpenCV Face detection with Haar cascades](https://pyimagesearch.com/2021/04/05/opencv-face-detection-with-haar-cascades/)
-- [Face Detection with HAAR Cascade in OpenCV Python](https://machinelearningknowledge.ai/face-detection-with-haar-cascade-in-opencv-python/)
+- [Face Detection 60 FPS](https://www.computervision.zone/courses/face-detection-60-fps/)
