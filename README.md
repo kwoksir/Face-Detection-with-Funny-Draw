@@ -3,17 +3,16 @@
 <img src="https://user-images.githubusercontent.com/61585411/167345274-5e1edf28-3f5f-4cde-938a-941b6fb8c4c0.jpg" width=600>
 
 ## Procedures
-1. Import the libraries.
+1. Import the library.
 2. Setting up a webcam.
 3. Creating face detector
 4. Define a function to draw bounding box with fancy effect
 5. Do face detection by using Haar Cascade
 6. Displaying the output
 
-## Step 1: Import the libraries
+## Step 1: Import the library
 ```python
 import cv2
-import time
 ```
 ## Step 2: Setting up a webcam (Windows)
 ```python
