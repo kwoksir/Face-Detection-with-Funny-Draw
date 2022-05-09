@@ -3,12 +3,12 @@ import cv2
 CAM_WIDTH = 640
 CAM_HEIGHT = 480
 
-face_detector = cv2.CascadeClassifier('face.xml')
+cap = cv2.VideoCapture()
+cap.open(0, cv2.CAP_DSHOW)
+cap.set(3, CAM_WIDTH)
+cap.set(4, CAM_HEIGHT)
 
-capture = cv2.VideoCapture()
-capture.open(0, cv2.CAP_DSHOW)
-capture.set(3, CAM_WIDTH)
-capture.set(4, CAM_HEIGHT)
+face_detector = cv2.CascadeClassifier('face.xml')
 
 def fancyDraw(img, bbox, l=30, t=5, rt= 3):
     x, y, w, h = bbox
@@ -34,20 +34,16 @@ def fancyDraw(img, bbox, l=30, t=5, rt= 3):
     return img
 
 while True:
-    success, img = capture.read()
+    success, img = cap.read()
     if success:
         faces = face_detector.detectMultiScale(img, scaleFactor=1.2, minNeighbors=5, minSize=(60,60))
     for (x,y,w,h) in faces:
         bbox = (x,y,w,h)
         img = fancyDraw(img,bbox)
-        #cv2.rectangle(img,(x,y), (x+w,y+h), (0,255,0),2)
         cv2.putText(img,"face",(x,y-5),cv2.FONT_HERSHEY_COMPLEX_SMALL, 1, (0,255,255), 1)
-#    cv2.resizeWindow('Frame1',CAM_WIDTH, CAM_HEIGHT)
-    cv2.imshow('Frame1',img)
 
+    cv2.imshow('Frame1',img)
     if cv2.waitKey(1) == ord('q') or cv2.waitKey(1) == 27:
-        cv2.destroyAllWindows()
-        capture.release()
         break
-else:
-    print('Fail to open')
+cv2.destroyAllWindows()
+cap.release()
